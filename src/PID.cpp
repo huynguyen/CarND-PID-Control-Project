@@ -1,5 +1,6 @@
 #include "PID.h"
 #include <iostream>
+#include <math.h>
 
 /*
 * TODO: Complete the PID class.
@@ -29,5 +30,16 @@ void PID::UpdateError(double cte) {
 
 double PID::TotalError() {
   return p_error + d_error + i_error;
+}
+
+double PID::SteeringValue(double cte) {
+  if (fabs(cte) < 0.001) { return 0.0; }
+
+  UpdateError(cte);
+  double steer_value;
+  steer_value = TotalError();
+  steer_value = std::min(steer_value, 1.0);
+  steer_value = std::max(steer_value, -1.0);
+  return steer_value;
 }
 

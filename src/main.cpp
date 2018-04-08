@@ -55,15 +55,7 @@ int main()
           * NOTE: Feel free to play around with the throttle and speed. Maybe use
           * another PID controller to control the speed!
           */
-          if (fabs(cte) < 0.001) {
-            steer_value = 0;
-          } else {
-            pid.UpdateError(cte);
-            steer_value = pid.TotalError();
-            steer_value = std::min(steer_value, 1.0);
-            steer_value = std::max(steer_value, -1.0);
-
-          }
+          steer_value = pid.SteeringValue(cte);
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;

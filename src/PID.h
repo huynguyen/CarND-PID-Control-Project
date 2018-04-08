@@ -39,6 +39,8 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+  double SteeringValue(double cte);
 };
 
 #endif /* PID_H */
