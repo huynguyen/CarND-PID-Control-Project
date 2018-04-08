@@ -6,11 +6,7 @@
 */
 
 using namespace std;
-PID::PID() {}
-
-PID::~PID() {}
-
-void PID::Init(double Kp, double Ki, double Kd) {
+PID::PID(double Kp, double Ki, double Kd) {
   p_error = 0;
   i_error = 0;
   d_error = 0;
@@ -26,6 +22,8 @@ void PID::Init(double Kp, double Ki, double Kd) {
   std::cout << "Ki " << this->Ki << std::endl;
   std::cout << "Kd " << this->Kd << std::endl;
 }
+
+PID::~PID() {}
 
 void PID::UpdateError(double cte) {
   int_cte += cte;

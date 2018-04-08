@@ -22,7 +22,7 @@ public:
   /*
   * Constructor
   */
-  PID();
+  PID(double Kp = 0.2, double Ki = 0.004, double Kd = 3.0);
 
   /*
   * Destructor.
