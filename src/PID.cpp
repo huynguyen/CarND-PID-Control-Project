@@ -33,11 +33,10 @@ double PID::TotalError() {
 }
 
 double PID::SteeringValue(double cte) {
-  if (fabs(cte) < 0.001) { return 0.0; }
-
   UpdateError(cte);
   double steer_value;
   steer_value = TotalError();
+  // Clamp steering value.
   steer_value = std::min(steer_value, 1.0);
   steer_value = std::max(steer_value, -1.0);
   return steer_value;

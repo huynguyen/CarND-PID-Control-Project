@@ -28,6 +28,12 @@ std::string hasData(std::string s) {
   return "";
 }
 
+void resetSimulator(uWS::WebSocket<uWS::SERVER> &ws)
+{
+  std::string msg = "42[\"reset\",{}]";
+  ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+}
+
 int main()
 {
   uWS::Hub h;
